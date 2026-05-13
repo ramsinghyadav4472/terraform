@@ -61,3 +61,13 @@ resource "aws_route_table_association"  "public_subnet" {
   subnet_id      = aws_subnet.public_subnet.id
   route_table_id = aws_route_table.my_rt.id
 } 
+
+resource "aws_instance" "myec2" {
+  ami = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI
+  instance_type = "t2.nano"
+    subnet_id = aws_subnet.public_subnet.id
+  
+    tags = {
+        Name = "Myec2-vpc"
+    }
+}
